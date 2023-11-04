@@ -1,17 +1,24 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <header>
-        <h1>Hotsite de Venda de Carro Esportivo</h1>
-  </header>
-
+  <div id="app">
+    <Header />
+      <RouterView />
+  </div>
 </template>
+
+<script>
+import Header from "./components/Header.vue";
+export default {
+  name: "App",
+  components: {
+    Header
+  }
+};
+</script>
 
 <style scoped>
 
 header {
-  background-color: #ff4500;
+  background-color: #7ebcd4;
   color: #fff;
   text-align: center;
   padding: 10px 0;
