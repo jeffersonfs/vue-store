@@ -1,26 +1,55 @@
 <script  lang="ts" setup>
 import { ref } from 'vue';
 
-const d_email = ref()
-const d_password = ref()
+const d_email = ref();
+const d_password = ref();
 
 function login(){
-    console.log("Login")
-    console.log(d_email.value)
-    console.log(d_password.value)
-
+  fetch('https://jogo.4cc.shop/api/login',{
+          method:  'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            email: d_email,
+            password: d_password,
+          })
+        })
+          .then(response => response.json())
+          .then(data => console.log(data))
 }
+/*asycn function login(){
+
+
+  try {
+    const response = await fetch("https://jogo.4cc.shop/api/login", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: {"email": d_email,
+             "password": d_password
+            }
+    });
+
+    const result = await response.json();
+    console.log("Success:", result);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+
+    console.log("Login");
+    console.log(d_email.value);
+    console.log(d_password.value);
+
+}*/
 
 </script>
 <template> 
-<section class="vh-100">
-  <div class="container-fluid h-custom">
+<section class="vh-100 mt-5">
+  <div class="container-fluid h-custom ">
     <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-md-9 col-lg-6 col-xl-5">
-        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-          class="img-fluid" alt="Sample image">
-      </div>
-      <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+      <div class="col-md-8 col-lg-6 col-xl-4">
         <form>
           
           <!-- Email input -->
