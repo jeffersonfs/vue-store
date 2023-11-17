@@ -13,7 +13,7 @@ function getImgUrl(idImg: string) {
 }
 
 
-fetch("https://pc.4cc.shop/api/computador/1")
+fetch("https://pc.4cc.shop/api/computador")
     .then(response => response.json())
     .then(data => produtos.value = data);
 
@@ -21,22 +21,20 @@ fetch("https://pc.4cc.shop/api/computador/1")
 </script>
 
 <template>
-<div class="container">
- <div class="card-group">
-    <Card>
 
-      <template #title>{{(produtos as any)?.data.attributes.marca}}</template>
-      <template #description>{{(produtos as any)?.data.attributes.modelo}}</template>
+<div class="container text-center ">
+ <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-md-center">
+    <Card v-for="p in (produtos as any)?.data">
+      <template #title>{{(p as any)?.attributes.marca}}</template>
+      <template #description>{{(p as any)?.attributes.modelo}}</template>
 
       <template #image>
-          <img :src="getImgUrl((produtos as any)?.data.attributes.imagem)"  
-               class="card-img-top" 
-               :alt="(produtos as any)?.data.attributes.modelo" />
+        <img :src="getImgUrl((p as any)?.attributes.imagem)"  
+            class="card-img-top h-auto" 
+            :alt="(p as any)?.attributes.modelo" />
       </template>
     </Card>
+ </div>
 </div>
 
-</div>
 </template>
-
-

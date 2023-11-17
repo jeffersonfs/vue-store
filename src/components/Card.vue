@@ -1,7 +1,7 @@
 <template>
-  <div class="card " style="width: 18rem;">
+  <div class="card" style="width: 18rem;">
 
-    <slot name="image"> </slot>
+         <slot name="image"> </slot>
     <!--<img src="..." class="card-img-top" alt="...">-->
     <div class="card-body">
       <h5 class="card-title"> <slot name="title"></slot> </h5>
