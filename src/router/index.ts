@@ -4,6 +4,8 @@ import AppContact from "../views/AppContact.vue"
 import AppMain from "../views/AppMain.vue"
 import AppProduct from "../views/AppProduct.vue"
 import AppLogin from "../views/AppLogin.vue"
+import AppCreateUser from "../views/AppCreateUser.vue"
+
 const routes = [
   {
     path: '/',
@@ -30,7 +32,12 @@ const routes = [
     name: 'Login',
     component: AppLogin
   },
-  
+  {
+    path: '/cadastro',
+    name: 'Cadastro',
+    component: AppCreateUser
+  }
+ 
 ]
 
 const base_url = import.meta.env.BASE_URL

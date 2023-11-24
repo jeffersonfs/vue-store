@@ -80,7 +80,7 @@ async function login(){
           <div class="text-center text-lg-start mt-4 pt-2">
             <button @click="login()" type="button" class="btn btn-primary btn-lg"
               style="padding-left: 2.5rem; padding-right: 2.5rem;">Entre</button>
-            <p class="small fw-bold mt-2 pt-1 mb-0">Você não tem conta ?<a href="#!"
+            <p class="small fw-bold mt-2 pt-1 mb-0">Você não tem conta ?<a href="/cadastro"
                 class="link-danger">Faça o cadastro.</a></p>
           </div>
 
