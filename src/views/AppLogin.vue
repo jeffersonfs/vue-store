@@ -1,9 +1,10 @@
 <script  lang="ts" setup>
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { useLoginStore } from '../store/login.ts'
 
+const store = useLoginStore()
 const router = useRouter()
-
 
 const d_email = ref();
 const d_password = ref();
@@ -22,8 +23,13 @@ async function login(){
           })
         })
     const result = await response.json();
+    store.id =  result["id"] 
+    store.email =  result["email"] 
+    store.token =  result["token"]
+
     router.push("/")
     console.log("Success:", result);
+
   } catch (error) {
     console.error("Error:", error);
   }
