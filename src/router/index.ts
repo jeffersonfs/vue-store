@@ -4,7 +4,8 @@ import AppContact from "../views/AppContact.vue"
 import AppMain from "../views/AppMain.vue"
 import AppProduct from "../views/AppProduct.vue"
 import AppLogin from "../views/AppLogin.vue"
-import AppCreateUser from "../views/AppCreateUser.vue"
+import AppCart from "../views/AppCart.vue"
+// import AppCreateUser from "../views/AppCreateUser.vue"
 
 const routes = [
   {
@@ -28,15 +29,20 @@ const routes = [
     component: AppProduct
   },
   {
+    path: '/addToCart/:id',
+    name: 'Cart',
+    component: AppCart
+  },
+  {
     path: '/login',
     name: 'Login',
     component: AppLogin
-  },
-  {
-    path: '/cadastro',
-    name: 'Cadastro',
-    component: AppCreateUser
   }
+  //{
+  //  path: '/cadastro',
+  //  name: 'Cadastro',
+  //  component: AppCreateUser
+  //}
  
 ]
 

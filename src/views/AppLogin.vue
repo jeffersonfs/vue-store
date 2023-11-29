@@ -1,11 +1,18 @@
 <script  lang="ts" setup>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { useLoginStore } from '../store/login.ts'
+
+const store = useLoginStore()
+const router = useRouter()
 
 const d_email = ref();
 const d_password = ref();
 
 async function login(){
-  fetch('https://pc.4cc.shop/api/login',{
+
+  try {
+   const response = await fetch('https://pc.4cc.shop/api/login',{
           method:  'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -15,10 +22,23 @@ async function login(){
             password: d_password.value,
           })
         })
-          .then(response => response.json())
-          .then(data => console.log(data))
+    const result = await response.json();
+    store.id =  result["id"] 
+    store.email =  result["email"] 
+    store.token =  result["token"]
+
+    router.push("/")
+    console.log("Success:", result);
+
+  } catch (error) {
+    console.error("Error:", error);
+  }
+            //.then(response => response.json())
+          //.then(data => console.log(data))
+
+
 }
-/*asycn function login(){
+/*async  function login(){
 
 
   try {
