@@ -41,6 +41,9 @@ function logout(){
           <p>{{store.email}}</p>
           <button type="button" class="btn btn-warning" @click="logout()">Sair</button>
         </div>
+        <div class="md-2">
+           <i class="bi bi-cart px-4 display-6"></i>
+        </div>
       </div>
 </header> 
 </template>
