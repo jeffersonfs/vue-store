@@ -2,9 +2,19 @@
 import CartItem from "../components/CartItem.vue"
 import { useRoute } from 'vue-router'
 import { ref } from 'vue';
+import { useCartStore } from '../stores/CartStore.ts'
 
-const route = useRoute();
-const id = route.params.id;
+const store = useCartStore()
+const route = useRoute()
+const id = route.params.id
+
+if (id === undefined){
+ console.log("Id " + id) 
+}else{
+  if(store.products[id] === undefined){
+    store.products[id] = 0
+  }
+}
 
 
 </script>
@@ -23,9 +33,11 @@ const id = route.params.id;
           </div>-->
         </div>
 
-        <CartItem :id="id"/>
+        <CartItem v-for="(quantity, id) in store.products" :id="id"/>
 
 
+
+        
                 <!-- <div class="card mb-4">
           <div class="card-body p-4 d-flex flex-row">
             <div class="form-outline flex-fill">
