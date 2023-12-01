@@ -7,6 +7,10 @@ import { useCartStore } from '../stores/CartStore.ts'
 const store = useCartStore()
 const route = useRoute()
 const id = route.params.id
+const show = ref(false)
+if (route.path === "/cart"){
+  show.value = true
+}
 
 if (id === undefined){
  console.log("Id " + id) 
@@ -33,7 +37,7 @@ if (id === undefined){
           </div>-->
         </div>
 
-        <CartItem v-for="(quantity, id) in store.products" :id="id"/>
+        <CartItem v-for="(quantity, id) in store.products" :id="id" :show="show"/>
 
 
 
