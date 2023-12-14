@@ -8,6 +8,7 @@ const store = useCartStore()
 const route = useRoute()
 const id = route.params.id
 const show = ref(false)
+console.log(route.path)
 if (route.path === "/cart"){
   show.value = true
 }

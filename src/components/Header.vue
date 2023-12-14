@@ -41,8 +41,11 @@ function logout(){
           <p>{{store.email}}</p>
           <button type="button" class="btn btn-warning" @click="logout()">Sair</button>
         </div>
-        <div class="md-2">
-           <i class="bi bi-cart px-4 display-6"></i>
+        <div class="px-2 md-2">
+           <router-link to="/cart" class=" btn btn-warning">
+           <i class="bi bi-cart text-white h5">
+</i><span class="badge  ">2</span>
+        </router-link>
         </div>
       </div>
 </header> 

@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+import { useRoute } from 'vue-router'
 const d_email = ref();
 const d_password = ref();
 
+const route = useRoute()
 async function createUser(){
 
   try {
@@ -29,6 +31,7 @@ async function createUser(){
     });
     const result = await response.json();
     console.log("Success:", result);
+    router.push('/login')   
   } catch (error) {
     console.error("Error:", error);
   }
