@@ -3,20 +3,18 @@ import { ref, onMounted, onBeforeMount, computed } from 'vue'
 import { useCartStore } from '../stores/CartStore.ts'
 
 const store = useCartStore()
-
 const produto = ref(null)
-const quantity = ref(1)
+const quantity = ref(0)
 
 
 
 const props = defineProps({
   id: { type: String, required: true },
-  show: { type: Boolean, required: true },
 })
 
 
 onBeforeMount(() => {
-  quantity.value = 1
+  quantity.value = 0
 
 })
 
@@ -24,18 +22,13 @@ onMounted(() => {
 
   if (store.products[props.id] === undefined){
     store.products[props.id] = 1
-    quantity.value = 1
-  }else{
-    if(!props.show){
-      quantity.value = store.products[props.id] + 1
-    }else{
-      quantity.value = store.products[props.id] 
-    }
   }
 
   fetch("https://pc.4cc.shop/api/computador/" + props.id)
     .then(response => response.json())
     .then(data => produto.value = data.data);
+  
+  quantity.value = store.products[props.id]
 })
 
 function getImgUrl(idImg: string) {

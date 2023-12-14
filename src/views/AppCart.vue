@@ -7,17 +7,12 @@ import { useCartStore } from '../stores/CartStore.ts'
 const store = useCartStore()
 const route = useRoute()
 const id = route.params.id
-const show = ref(false)
-console.log(route.path)
-if (route.path === "/cart"){
-  show.value = true
-}
-
-if (id === undefined){
- console.log("Id " + id) 
-}else{
+console.log(route.name)
+if (route.name === "AddCart"){
   if(store.products[id] === undefined){
-    store.products[id] = 0
+    store.products[id] = 1
+  }else{
+    store.products[id] += 1
   }
 }
 
@@ -38,7 +33,7 @@ if (id === undefined){
           </div>-->
         </div>
 
-        <CartItem v-for="(quantity, id) in store.products" :id="id" :show="show"/>
+        <CartItem v-for="(quantity, id) in store.products" :id="id"/>
 
 
 

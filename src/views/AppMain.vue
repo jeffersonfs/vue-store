@@ -26,7 +26,7 @@ fetch("https://pc.4cc.shop/api/computador")
  <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-md-center">
     <Card v-for="p in (produtos as any)?.data">
       <template #actions>
-        <router-link :to="'/addToCart/' + (p as any)?.id" class="btn btn-primary">Comprar</router-link>
+        <router-link :to="'/cart/' + (p as any)?.id" class="btn btn-primary">Comprar</router-link>
       </template>
       <template #title>{{(p as any)?.attributes.marca}}</template>
       <template #description>{{(p as any)?.attributes.modelo}}</template>
